@@ -1,11 +1,11 @@
-const notFound = (req, res, next) => {
+const notFoundMiddleware = (req, res, next) => {
   try {
     res.status(404).json({
-      msg: "request does not exits!",
+      msg: "Route does not exist!",
     });
   } catch (error) {
     console.log(error);
   }
 };
 
-module.exports = notFound;
+module.exports = notFoundMiddleware;
