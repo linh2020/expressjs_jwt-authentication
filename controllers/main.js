@@ -22,11 +22,9 @@ const login = async (req, res) => {
 };
 
 const dashboard = async (req, res) => {
-  console.log(req.user); // { id: 23, username: 'linh' }
-
   const luckyNumber = Math.floor(Math.random() * 100);
   res.status(200).json({
-    msg: `Hello, ${req.user.username}`,
+    msg: `Hello, ${req.user.username}`, // { id: 23, username: 'linh' }
     secret: `Here is your authorized data, your lucky number is ${luckyNumber}`,
   });
 };
