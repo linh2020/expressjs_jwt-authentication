@@ -48,15 +48,17 @@ formDOM.addEventListener("submit", async (e) => {
   btnDOM.addEventListener("click", async () => {
     const token = localStorage.getItem("token");
     try {
-      const { data } = axios.get("/api/v1/dashboard", {
+      const { data } = await axios.get("/api/v1/dashboard", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
 
+      console.log(data);
+
       resultDOM.innerHTML = `<h5>${data.msg}</h5><p>${data.secret}</p>`;
     } catch (error) {
-      console.log(error);
+      console.log(error.response);
       localStorage.removeItem("token");
       resultDOM.innerHTML = `<p>${error.response.data.msg}</p>`;
     }
