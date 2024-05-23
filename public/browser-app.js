@@ -44,25 +44,25 @@ formDOM.addEventListener("submit", async (e) => {
     tokenDOM.classList.remove("text-success");
   }
   setTimeout(() => (formAlertDOM.style.display = "none"), 2000); // Please Provide Email And Password
+});
 
-  btnDOM.addEventListener("click", async () => {
-    const token = localStorage.getItem("token");
-    try {
-      const { data } = await axios.get("/api/v1/dashboard", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+btnDOM.addEventListener("click", async () => {
+  const token = localStorage.getItem("token");
+  try {
+    const { data } = await axios.get("/api/v1/dashboard", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
-      console.log(data);
+    console.log(data);
 
-      resultDOM.innerHTML = `<h5>${data.msg}</h5><p>${data.secret}</p>`;
-    } catch (error) {
-      console.log(error.response);
-      localStorage.removeItem("token");
-      resultDOM.innerHTML = `<p>${error.response.data.msg}</p>`;
-    }
-  });
+    resultDOM.innerHTML = `<h5>${data.msg}</h5><p>${data.secret}</p>`;
+  } catch (error) {
+    console.log(error.response);
+    localStorage.removeItem("token");
+    resultDOM.innerHTML = `<p>${error.response.data.msg}</p>`;
+  }
 });
 
 const checkToken = () => {
