@@ -5,7 +5,7 @@ const login = async (req, res) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
-    throw new CustomAPIError("Please provide email and password", 400);
+    throw new CustomAPIError("Please provide email and password", 400); // 400 Bad Request
   }
 
   // just for demo, normally provided by DB
@@ -13,11 +13,12 @@ const login = async (req, res) => {
 
   // try to keep payload small, better experience for user
   // just for demo, in production use long, complex and unguessable string value
+  // https://jwt.io/
   const token = jwt.sign({ id, username }, process.env.JWT_SECRET, {
-    expiresIn: "30d",
+    expiresIn: "5m",
   });
 
-  res.status(200).json({ msg: "user created", token });
+  res.status(200).json({ msg: "user created", token }); // HTTP 200 OK success - the request has succeeded
 };
 
 const dashboard = async (req, res) => {
