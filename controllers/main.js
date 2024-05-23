@@ -32,7 +32,7 @@ const dashboard = async (req, res) => {
   // console.log(token);
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    console.log(decoded); // { id: 23, username: 'aaaa', iat: 1716454914, exp: 1716455214 }
+    // console.log(decoded); // { id: 23, username: 'aaaa', iat: 1716454914, exp: 1716455214 }
 
     const luckyNumber = Math.floor(Math.random() * 100);
     res.status(200).json({

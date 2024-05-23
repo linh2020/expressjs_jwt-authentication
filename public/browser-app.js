@@ -17,7 +17,7 @@ formDOM.addEventListener("submit", async (e) => {
 
   try {
     const { data } = await axios.post("/api/v1/login", { username, password });
-    console.log(data);
+    // console.log(data);
     /*  Just for testing
         msg:    "user created"
         token:  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjMsInVzZXJuYW1lIjoiYWFhYSIsImlhdCI6MTcxNjQ1MTI0MCwiZXhwIjoxNzE2NDUxNTQwfQ.VymI4OdqWDbVKvDE_3FcdvYZQo2bzkVDH2L4Ii8w6Ec"
@@ -35,7 +35,7 @@ formDOM.addEventListener("submit", async (e) => {
     tokenDOM.textContent = "Token Present";
     tokenDOM.classList.add("text-success");
   } catch (error) {
-    console.log(error.response); // msg: "Please provide email and password"
+    // console.log(error.response); // msg: "Please provide email and password"
     formAlertDOM.style.display = "block";
     formAlertDOM.textContent = error.response.data.msg;
     localStorage.removeItem("token");
@@ -55,11 +55,11 @@ btnDOM.addEventListener("click", async () => {
       },
     });
 
-    console.log(data);
+    // console.log(data);
 
     resultDOM.innerHTML = `<h5>${data.msg}</h5><p>${data.secret}</p>`;
   } catch (error) {
-    console.log(error.response);
+    // console.log(error.response);
     localStorage.removeItem("token");
     resultDOM.innerHTML = `<p>${error.response.data.msg}</p>`;
   }
