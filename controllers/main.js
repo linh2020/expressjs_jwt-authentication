@@ -30,7 +30,6 @@ const dashboard = async (req, res) => {
 
   const token = authHeader.split(" ")[1];
   // console.log(token);
-
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     console.log(decoded); // { id: 23, username: 'aaaa', iat: 1716454914, exp: 1716455214 }
